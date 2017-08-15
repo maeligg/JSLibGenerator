@@ -1,6 +1,7 @@
 const request = require('request');
-const config = require('./config.js');
 const Twit = require('twit');
+// Uncomment config if running locally (see readme for more details)
+// const config = require('./config.js');
 
 
 // Words arrays
