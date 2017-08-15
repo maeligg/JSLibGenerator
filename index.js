@@ -38,7 +38,7 @@ const tweet = () => {
       const randomWord = JSON.parse(body).word;
       const randomWordCapitalized = randomWord.charAt(0).toUpperCase() + randomWord.slice(1);
       const syntaxType = Math.floor(Math.random() * 3);
-      const syntaxA = `${randomWordCapitalized}JS : like ${randomItem(libsAndTools)}, but for ${randomItem(targets)}`;
+      const syntaxA = `${randomWordCapitalized}JS : like ${randomItem(libs)}, but for ${randomItem(targets)}`;
       const syntaxB = `${randomWordCapitalized}JS : ${randomItem(verbs)} your ${randomItem(targets)} using ${randomItem(libsAndTools)}`;
       const tweetContent = syntaxType === 0 ? syntaxA : syntaxB; // 1 in 3 chances to use syntaxA
 
