@@ -1,0 +1,17 @@
+{
+  "name": "Javascript Library Generator",
+  "version": "1.0.0",
+  "description": "A twitter bot generating Javascript library names and descriptions",
+  "dependencies": {
+    "request": "^2.81.0",
+    "twit": "^2.2.9"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-plumber": "^1.0.1"
+  }
+}
