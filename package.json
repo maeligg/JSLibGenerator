@@ -1,5 +1,5 @@
 {
-  "name": "Javascript Library Generator",
+  "name": "Javascript_Library_Generator",
   "version": "1.0.0",
   "description": "A twitter bot generating Javascript library names and descriptions",
   "dependencies": {
