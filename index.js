@@ -1,8 +1,8 @@
 const request = require('request');
 const Twit = require('twit');
-// Uncomment config if running locally (see readme for more details)
+// Uncomment these lines if running locally (see readme for more details)
 // const config = require('./config.js');
-
+// process.env = config;
 
 // Words arrays
 const verbs = ['pixelify', 'rasterize', 'vectorize', 'optimize', 'package', 'minify', 'unminify', 'uglify', 'prettify', 'componentize', 'inject', 'transpile', 'unit test', 'curry', 'lint', 'unit test', 'concatenate', 'compile', 'cache', 'embed', 'templatize', 'audit', 'prototype', 'modularize', 'debug', 'import', 'export', 'polyfill'];
@@ -20,13 +20,13 @@ const getNounsURL = 'http://api.wordnik.com/v4/words.json/randomWord?' +
   'minCorpusCount=1000&minDictionaryCount=10&' +
   'excludePartOfSpeech=proper-noun,proper-noun-plural,proper-noun-posessive,suffix,family-name,idiom,affix&' +
   'hasDictionaryDef=true&includePartOfSpeech=noun&limit=2&maxLength=12&' +
-  `api_key=${config.wordnik_token}`;
+  `api_key=${process.env.wordnik_token}`;
 
 const T = new Twit({
-  consumer_key: config.consumer_key,
-  consumer_secret: config.consumer_secret,
-  access_token: config.access_token,
-  access_token_secret: config.access_token_secret,
+  consumer_key: process.env.consumer_key,
+  consumer_secret: process.env.consumer_secret,
+  access_token: process.env.access_token,
+  access_token_secret: process.env.access_token_secret,
 });
 
 
