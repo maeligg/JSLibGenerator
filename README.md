@@ -1,11 +1,12 @@
 # Javascript Library Generator
 
-This bot generates a Javascript library name and description.
+This bot generates a random Javascript library name and description.
 
 ## Installation
 
 To test the bot locally, you will need to uncomment the config import in index.js. You will also need a config.js file at the root the directory, using the following template :
-```module.exports = {
+```
+module.exports = {
   wordnik_token:        'XXX',
   consumer_key:         'XXX',
   consumer_secret:      'XXX',
