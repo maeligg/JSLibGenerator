@@ -2,16 +2,19 @@
   "name": "Javascript_Library_Generator",
   "version": "1.0.0",
   "description": "A twitter bot generating Javascript library names and descriptions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Maël Brunet",
+  "license": "ISC",
   "dependencies": {
-    "request": "^2.81.0",
-    "twit": "^2.2.9"
+    "express": "4.x",
+    "eslint": "^4.19.1",
+    "twit": "^2.2.10"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.2.0",
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^3.0.1",
-    "gulp-plumber": "^1.0.1"
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0"
   }
 }

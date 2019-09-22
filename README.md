@@ -1,19 +1,9 @@
 # Javascript Library Generator
 
-This bot generates a random Javascript library name and description.
+This bot generates a random Javascript library name and description and posts it to Twitter.
 
-## Installation
+# Usage
 
-To test the bot locally, you will need to uncomment the config import in index.js. You will also need a config.js file at the root the directory, using the following template :
-```
-module.exports = {
-  wordnik_token:        'XXX',
-  consumer_key:         'XXX',
-  consumer_secret:      'XXX',
-  access_token:         'XXX',
-  access_token_secret:  'XXX'
-}
-```
-Fill in each section with your own keys/tokens (the last four are for the Twitter API).
+To test the bot locally, you will need to set environment variables for the following API keys : 'wordnik_token', 'consumer_key', 'consumer_secret', 'access_token', 'access_token_secret' (the last four are for the Twitter API).
 For more information on the Twitter API, visit https://apps.twitter.com/app/new
 For more information on the Wordnik API, visit http://developer.wordnik.com/
