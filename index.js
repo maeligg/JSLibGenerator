@@ -1,6 +1,8 @@
 const Twit = require('twit');
-const express = require('express')
+const express = require('express');
 const request = require('request');
+const Filter = require('bad-words'),
+      filter = new Filter();
 
 const app = express()
 app.use(express.static('public'));
@@ -180,6 +182,8 @@ app.all('/post', async (req, res) => {
     if (!error && response.statusCode === 200) {
       // Build the tweet
       const randomWord = JSON.parse(body).word;
+      const isProfane = filter.isProfane(randomWord);
+      if (isProfane) return;
       const randomWordCapitalized =
         randomWord.charAt(0).toUpperCase() + randomWord.slice(1);
       const syntaxType = Math.floor(Math.random() * 3);
@@ -198,6 +202,7 @@ app.all('/post', async (req, res) => {
           console.log('response: ', resp);
         }
       });
+
     } else {
       console.log('error: ', error)
     }

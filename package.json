@@ -9,8 +9,9 @@
   "author": "Maël Brunet",
   "license": "ISC",
   "dependencies": {
-    "express": "4.x",
+    "bad-words": "^3.0.3",
     "eslint": "^4.19.1",
+    "express": "4.x",
     "twit": "^2.2.10"
   },
   "devDependencies": {
