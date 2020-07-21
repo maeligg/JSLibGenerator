@@ -1,8 +1,10 @@
+/* eslint-disable linebreak-style */
 const Twit = require('twit');
 const express = require('express');
 const request = require('request');
 const Filter = require('bad-words'),
       filter = new Filter();
+require('dotenv').config();
 
 const app = express()
 app.use(express.static('public'));
@@ -177,38 +179,34 @@ const randomItem = array => array[Math.floor(Math.random() * array.length)];
 
 const getNounsURL = `http://api.wordnik.com/v4/words.json/randomWord?minCorpusCount=1000&minDictionaryCount=10&excludePartOfSpeech=proper-noun,proper-noun-plural,suffix,family-name,idiom,affix&hasDictionaryDef=true&includePartOfSpeech=noun&limit=2&maxLength=12&api_key=${process.env.wordnik_token}`;
 
-app.all('/post', async (req, res) => {
-	request.get({ url: getNounsURL }, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      // Build the tweet
-      const randomWord = JSON.parse(body).word;
-      const isProfane = filter.isProfane(randomWord);
-      if (isProfane) return;
-      const randomWordCapitalized =
-        randomWord.charAt(0).toUpperCase() + randomWord.slice(1);
-      const syntaxType = Math.floor(Math.random() * 3);
-      const syntaxA = `${randomWordCapitalized}JS : like ${randomItem(
-        libs
-      )}, but for ${randomItem(targets)}`;
-      const syntaxB = `${randomWordCapitalized}JS : ${randomItem(
-        verbs
-      )} your ${randomItem(targets)} using ${randomItem(libsAndTools)}`;
-      const tweetContent = syntaxType === 0 ? syntaxA : syntaxB; // 1 in 3 chances to use syntaxA
+request.get({ url: getNounsURL }, (error, response, body) => {
+  if (!error && response.statusCode === 200) {
+    // Build the tweet
+    const randomWord = JSON.parse(body).word;
+    const isProfane = filter.isProfane(randomWord);
+    if (isProfane) return;
+    const randomWordCapitalized =
+      randomWord.charAt(0).toUpperCase() + randomWord.slice(1);
+    const syntaxType = Math.floor(Math.random() * 3);
+    const syntaxA = `${randomWordCapitalized}JS : like ${randomItem(
+      libs
+    )}, but for ${randomItem(targets)}`;
+    const syntaxB = `${randomWordCapitalized}JS : ${randomItem(
+      verbs
+    )} your ${randomItem(targets)} using ${randomItem(libsAndTools)}`;
+    const tweetContent = syntaxType === 0 ? syntaxA : syntaxB; // 1 in 3 chances to use syntaxA
 
-      T.post('statuses/update', { status: tweetContent }, (err, data, resp) => {
-        if (err) {
-          console.log('error: ', err);
-        } else {
-          console.log('response: ', resp);
-        }
-      });
+    T.post('statuses/update', { status: tweetContent }, (err, data, resp) => {
+      if (err) {
+        console.log('error: ', err);
+      } else {
+        console.log('response: ', resp);
+      }
+    });
 
-    } else {
-      console.log('error: ', error)
-    }
-  });
-  
-  res.sendStatus(200);
+  } else {
+    console.log('error: ', error)
+  }
 });
 
 const listener = app.listen(process.env.PORT, function () {
